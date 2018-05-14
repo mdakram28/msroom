@@ -1,6 +1,7 @@
 package com.example.msroom.rest.controller;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class RoomController {
 	@PostMapping("/add")
 	@ResponseBody
 	public void addRoom(@RequestParam int roomId, @RequestParam String name, @RequestParam int floor,
-			@RequestParam int size) {
-		Room room = new Room(roomId, name, floor, size);
+			@RequestParam int size, @RequestParam String accessGroup) {
+		Room room = new Room(roomId, name, floor, size, accessGroup);
 		roomDAO.createNewRoom(room);
 	}
 
@@ -41,6 +42,12 @@ public class RoomController {
 	@ResponseBody
 	public Stream<Room> getAllRooms() {
 		return roomDAO.getAllRoomsStream();
+	}
+	
+	@GetMapping("/accessible")
+	@ResponseBody
+	public Stream<Room> getAllAccessibleRooms() {
+		return roomDAO.getAllAccessibleRoomsStream();
 	}
 
 	@GetMapping("/roomAvailable")

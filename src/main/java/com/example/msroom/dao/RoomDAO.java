@@ -1,6 +1,7 @@
 package com.example.msroom.dao;
 
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 import com.example.msroom.beans.Duration;
@@ -15,6 +16,9 @@ public interface RoomDAO {
 	boolean roomAvailable(int roomId, Duration duration);
 
 	Stream<Room> getAllRoomsStream();
+	
+	Stream<Room> getAllAccessibleRoomsStream();
 
 	boolean bookRoom(int roomId, Duration duration);
+	
 }

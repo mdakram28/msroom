@@ -5,4 +5,9 @@
 
 	<bean id="roomDAO" class="com.example.msroom.dao.impl.SimpleRoomDAO">
 	</bean>
+	
+	<bean id="msUser" class="com.example.msroom.beans.MsUser">
+		<property name="baseUrl" value="http://localhost:8080/msuser"></property>
+	</bean>
+	
 </beans>
